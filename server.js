@@ -12,11 +12,15 @@ const PORT = process.env.PORT || 5000;
 app.use(cors());
 app.use(express.json());
 
+app.get("/", (req, res) => {
+  res.send("Server Running Successfully");
+});
+
 app.post("/send-email", async (req, res) => {
 
-  const { name, email } = req.body;
-
   try {
+
+    const { name, email } = req.body;
 
     const transporter = nodemailer.createTransport({
       service: "gmail",
@@ -32,7 +36,7 @@ app.post("/send-email", async (req, res) => {
       subject: "Login Success",
       html: `
         <h1>Welcome ${name}</h1>
-        <p>Your login successful 🚀</p>
+        <p>Email Trigger Successful 🚀</p>
       `,
     });
 
@@ -47,8 +51,7 @@ app.post("/send-email", async (req, res) => {
 
     res.status(500).json({
       success: false,
-      message: "Email Failed",
-      error: error.message,
+      message: error.message,
     });
   }
 });

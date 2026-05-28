@@ -2,7 +2,6 @@
   "name": "node",
   "version": "1.0.0",
   "main": "server.js",
-  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js"
@@ -13,7 +12,9 @@
   "description": "",
   "dependencies": {
     "cors": "^2.8.6",
+    "dotenv": "^17.4.2",
     "express": "^5.2.1",
+    "mysql2": "^3.22.4",
     "nodemailer": "^8.0.9"
   }
 }
